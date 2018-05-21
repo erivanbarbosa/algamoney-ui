@@ -18,7 +18,37 @@
     </div>
 
     <div class="ui-g-12">
-      <button pButton type="submit" label="Pesquisiar"></button>
+      <button pButton type="submit" label="Pesquisar"></button>
     </div>
+
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <p-dataTable [value]="lancamentos">
+          <p-column field="pessoa" header="Pessoa"></p-column>
+          <p-column field="descricao" header="Descrição"></p-column>
+          <p-column field="dataVencimento" header="Vencimento" styleClass="col-data"></p-column>
+          <p-column field="dataPagamento" header="Pagamento" styleClass="col-data"></p-column>
+          <p-column field="valor" styleClass="col-valor">
+            <ng-template pTemplate="body" let-lanc="rowData">
+              <span [ngStyle]="lanc.tipo == 'RECEITA' ? {color:'blue'} : {color:'red'} ">{{lanc.valor}}</span>
+            </ng-template>
+          </p-column>
+
+          <p-column header="Ações" styleClass="col-acao">
+            <ng-template pTemplate="body">
+              <a pButton icon="fa-pencil">   </a>
+              <button pButton icon="fa-trash">   </button>
+            </ng-template>
+          </p-column>
+        </p-dataTable>
+
+      </div>
+    </div>
+
+    <div class="ui-g-12">
+      <button pButton type="submit" label="Novo Lancamento"></button>
+    </div>
+
+
   </div>
 </div>
