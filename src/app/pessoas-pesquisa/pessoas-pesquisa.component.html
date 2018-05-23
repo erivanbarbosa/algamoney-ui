@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <h1>Pessoas</h1>
+    </div>
+  </div>
+
+  <div class="ui-g">
+    <div class="ui-g-12 ui-fluid" >
+      <label>Nome</label>
+      <input type="text" pInputText  />
+    </div>
+  </div>
+
+  <div class="ui-g">
+    <div class="ui-g-12" >
+        <button pButton type="button" label="Pesquisar" ></button>
+    </div>
+  </div>
+
+  <div class="ui-g">
+      <div class="ui-g-12" >
+          <p-dataTable #dt [value]="pessoas" [paginator]="true" [rows]="5" [responsive]="true">
+              <p-column field="nome" header="Nome"></p-column>
+              <p-column field="cidade" header="Cidade"></p-column>
+              <p-column field="estado" header="Estado"></p-column>
+              <p-column field="ativo" header="Status">
+                <ng-template pTemplate="body" let-pess="rowData">
+                    <a href="javascript:;" [pTooltip]="pess.ativo ? 'Desativar' : 'Ativar'"
+                    tooltipPosition="top">
+                  {{ pes.ativo ? 'Ativo' : 'Inativo' }}
+                    </a>
+                </ng-template>
+              </p-column>
+          </p-dataTable>
+      </div>
+    </div>
+
+    <div class="ui-g">
+        <div class="ui-g-12" >
+            <button pButton type="button" label="Nova Pessoa" ></button>
+        </div>
+      </div>
+
+
+</div>
